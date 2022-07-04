@@ -17,6 +17,12 @@ spring:
     password: 1234
     driver-class-name: com.mysql.cj.jdbc.Driver
 
+
+
+mybatis:
+    config-location: classpath:mybatis-config.xml
+    mapper-locations: mappers/*.xml
+
 server:
   port: 8888
 

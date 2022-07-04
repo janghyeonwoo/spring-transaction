@@ -1,6 +1,7 @@
 package com.example.trans.service;
 
 import com.example.trans.entity.Game;
+import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.TransactionStatus;
@@ -13,6 +14,7 @@ import java.util.List;
 public class ProxyTransService {
     TransService transService;
     PlatformTransactionManager platformTransactionManager;
+
 
     public ProxyTransService(TransService transService, PlatformTransactionManager platformTransactionManager) {
         this.transService = transService;

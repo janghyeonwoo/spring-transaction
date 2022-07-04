@@ -16,17 +16,25 @@ import java.util.List;
 @RequiredArgsConstructor
 @RestController
 public class TranController {
-    private final ProxyTransService transService;
+//    private final ProxyTransService transService;
+    private final TransService transService;
 
-    @GetMapping("test")
+    @GetMapping("/game/list")
     public String getTrans(){
-//      List<Game> gameList = trasService.getTransGameAllList();
+      List<Game> gameList = transService.getGameAllList();
       return "test";
     }
 
-    @GetMapping("/save/game")
+    @GetMapping("/game/save")
     public String saveGame(){
         transService.saveGame();
         return "success";
+    }
+
+    @GetMapping("/game/jpa")
+    public String getJpa(){
+        transService.jpaMyBatis();
+        return "jpa";
+
     }
 }
