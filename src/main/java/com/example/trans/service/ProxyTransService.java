@@ -1,5 +1,6 @@
 package com.example.trans.service;
 
+import com.example.trans.dto.ReqGaveSave;
 import com.example.trans.entity.Game;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.stereotype.Service;
@@ -34,10 +35,10 @@ public class ProxyTransService {
         return gameList;
     }
 
-    public void saveGame(){
+    public void saveGame(ReqGaveSave reqGaveSave){
         TransactionStatus transactionStatus = platformTransactionManager.getTransaction(new DefaultTransactionDefinition());
         try {
-            transService.saveGame();
+            transService.saveGame(reqGaveSave);
             platformTransactionManager.commit(transactionStatus);
         } catch (Exception e){
             platformTransactionManager.rollback(transactionStatus);

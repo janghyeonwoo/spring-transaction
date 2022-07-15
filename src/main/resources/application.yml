@@ -18,6 +18,16 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
 
 
+logging:
+  level:
+    ROOT: INFO
+    org:
+      springframework:
+        orm:
+          jpa: DEBUG
+        transaction: DEBUG
+
+
 
 mybatis:
     config-location: classpath:mybatis-config.xml

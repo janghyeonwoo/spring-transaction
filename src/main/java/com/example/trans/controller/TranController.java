@@ -1,14 +1,14 @@
 package com.example.trans.controller;
 
+import com.example.trans.dto.ReqGaveSave;
 import com.example.trans.entity.Game;
 import com.example.trans.service.ProxyTransService;
 import com.example.trans.service.TransService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
 import java.util.List;
 
 @Slf4j
@@ -25,16 +25,16 @@ public class TranController {
       return "test";
     }
 
-    @GetMapping("/game/save")
-    public String saveGame(){
-        transService.saveGame();
+    @PostMapping("/game/save")
+    public String saveGame(@RequestBody ReqGaveSave reqGaveSave) throws IOException {
+        transService.saveGame(reqGaveSave);
         return "success";
     }
 
-    @GetMapping("/game/jpa")
-    public String getJpa(){
-        transService.jpaMyBatis();
-        return "jpa";
-
-    }
+//    @GetMapping("/game/jpa")
+//    public String getJpa(){
+//        transService.jpaMyBatis();
+//        return "jpa";
+//
+//    }
 }
