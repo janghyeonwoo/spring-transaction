@@ -33,16 +33,9 @@ public class TransService {
     //게임 저장
     @Transactional
     public void saveGame(ReqGaveSave reqGaveSave){
-        TransactionStatus status = platformTransactionManager.getTransaction(new DefaultTransactionDefinition());
-        log.info("First isRollbackOnly : {}" , status.isRollbackOnly());
         Game game = Game.builder().name(reqGaveSave.getName()).build();
         gameRepository.save(game);
-        try {
-            innerTransService.saveGameHistory(game, "등록");
-        } catch (Exception e) {
-            log.info("Exception isRollbackOnly : {}", status.isRollbackOnly());
-        }
-        log.info("Last isRollbackOnly {}", status.isRollbackOnly());
+        innerTransService.saveGameHistory(game, "등록");
     }
 
 //    @Transactional(propagation = Propagation.REQUIRED)

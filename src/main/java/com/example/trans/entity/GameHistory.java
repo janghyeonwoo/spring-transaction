@@ -19,6 +19,9 @@ public class GameHistory {
     @ManyToOne
     Game game;
 
+//    @Column(name = "game_idx")
+//    private Long gameIdx
+
     @Column(name = "content")
     private String content;
 }
